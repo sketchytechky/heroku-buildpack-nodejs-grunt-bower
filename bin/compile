@@ -19,6 +19,12 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 LP_DIR=`cd $(dirname $0); cd ..; pwd`
 
+# SUB_BUILD_DIR: allow specifying a subfolder for build
+if [ -z "$SUB_BUILD_DIR" ]; then
+  echo "-----> Using sub build dir $SUB_BUILD_DIR, buildir is now $BUILD_DIR/$SUB_BUILD_DIR"
+  BUILD_DIR="$BUILD_DIR/$SUB_BUILD_DIR"
+fi
+
 function error() {
   echo " !     $*" >&2
   exit 1
